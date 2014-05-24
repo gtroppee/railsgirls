@@ -8,18 +8,16 @@
       <th>Message</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.user %></td>
+        <td><%= post.user || image_tag('anonymous.png', width: 50, height: 50, title: 'Anonymous author') %></td>
         <td><%= post.title %></td>
         <td><%= post.message %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-sm btn-warning' %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></td>
       </tr>
     <% end %>

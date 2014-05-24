@@ -1,4 +1,8 @@
+<h2 class="well">All posts from <%= @user %></h2>
+
 <% @user.posts.each do |post| %>
+  <p><b><%= post.title %></b> <small class="note">- last update on <%= format_complete_date(post.updated_at) %></small></p>
   <p><%= post.message %></p>
+  <hr>
 <% end %>
 

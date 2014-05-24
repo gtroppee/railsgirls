@@ -1,12 +1,32 @@
 @import "bootstrap";
 
-.nav li{
+.navbar .nav li{
   float: left !important;
   margin-right: 20px !important;
+  &:last-child{
+    float: right !important;
+  }
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
+}
+
+h1 small{
+  font-weight: 200;
+}
+
+.note{
+  font-style: italic;
+  color: grey;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
 }

@@ -37,10 +37,8 @@
 
           <% if flash.any? %>
             <% flash.each do |key, value| %>
-              <div class="alert alert-warning fade in flash-messages">
-                <button class="close" data-dismiss="alert">
-                  ×
-                </button>
+              <div class="alert alert-<%= devise_flash_override(key) %> fade in flash-messages">
+                <button class="close" data-dismiss="alert">×</button>
                 <span><%= value %></span>
               </div>
             <% end %>
@@ -55,6 +53,8 @@
     $('button.close').click(function(){
       $(this).parent().fadeOut();
     });
+
+    $('#error_explanation').addClass('alert alert-danger');
     </script>
 
 </body>
