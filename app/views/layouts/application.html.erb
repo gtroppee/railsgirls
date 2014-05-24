@@ -10,14 +10,17 @@
 <body>
 
   <div class="container">
-      <h1>RAILSGIRLS <small>logged as <%= current_user.email %></small></h1>
+      <h1>RAILSGIRLS <small><%= "logged as #{current_user}" if current_user %></small></h1>
       <div class="navbar navbar-inverse">
         <div class="navbar-inner nav-collapse" style="height: auto;">
           <ul class="nav">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Posts', posts_path %></li>
-            <li><%= link_to 'Users', users_path %></li>
+            <% if current_user %>
+            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+            <% else %>
             <li><%= link_to 'Sign in / up', new_user_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -25,9 +28,9 @@
       <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
           <h3>Users</h3>
           <ul class="nav nav-tabs nav-stacked">
-            <li><a href="#">Another Link 1</a></li>
-            <li><a href="#">Another Link 2</a></li>
-            <li><a href="#">Another Link 3</a></li>
+            <% @users.each do |user| %>
+              <li><%= link_to user, user_path(user) %></li>
+            <% end %>
           </ul>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10 main">
@@ -47,6 +50,12 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+    $('button.close').click(function(){
+      $(this).parent().fadeOut();
+    });
+    </script>
 
 </body>
 </html>
